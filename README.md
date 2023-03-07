@@ -13,3 +13,4 @@
 #Codigo
 
 
+#Codigo en C para activar un motor biaxial stepper en un Raspberry Pi Pico W
