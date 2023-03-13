@@ -78,6 +78,6 @@ Las funciones forward() y backward() controlan la dirección de rotación de los
 
 
 
-
+![Untitled.png]
 
 
