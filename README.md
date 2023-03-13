@@ -78,6 +78,6 @@ Las funciones forward() y backward() controlan la dirección de rotación de los
 
 
 
-![biaxial-stepper-motor/Untitled.png]
+![[biaxial-stepper-motor/Untitled.png](https://scontent.ftij1-2.fna.fbcdn.net/v/t1.15752-9/336167421_1840867446299820_6746456583620561127_n.png?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DUEgRC-sZ4oAX-0sJLN&_nc_ht=scontent.ftij1-2.fna&oh=03_AdRAAnOdR5VyNWB8NB2ZGRB_m837AvaZivsKgPUWK1OWMg&oe=64361C0A)]
 
 
