@@ -79,8 +79,10 @@ Este código simula dos motores paso a paso conectados al Raspberry Pi Pico en l
 
 Las funciones forward() y backward() controlan la dirección de rotación de los motores, utilizando la función step() para realizar un paso en cada motor. La función step() toma cuatro argumentos: los valores de los cuatro pines de control del motor y un valor de retardo delay
 
+https://scontent.ftij1-3.fna.fbcdn.net/v/t1.15752-9/335944045_745552403675292_6843736346227556516_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=Xzh6PLDQk8oAX-gf1NQ&_nc_ht=scontent.ftij1-3.fna&oh=03_AdT47h6Mc5eEPbb76HIP576m6bVEROXjDEx1O5w-M50AtA&oe=64406C78
 
 
-![biaxial-stepper-motor/Untitled.png](https://scontent.ftij1-2.fna.fbcdn.net/v/t1.15752-9/336167421_1840867446299820_6746456583620561127_n.png?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_ohc=DUEgRC-sZ4oAX-0sJLN&_nc_ht=scontent.ftij1-2.fna&oh=03_AdRAAnOdR5VyNWB8NB2ZGRB_m837AvaZivsKgPUWK1OWMg&oe=64361C0A)
+
+https://wokwi.com/projects/359754999682194433
 
 
