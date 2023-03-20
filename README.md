@@ -15,6 +15,9 @@ se utiliza para controlar el movimiento en dos ejes perpendiculares entre sí. E
 #Como funciona
 Los motores biaxiales stepper motor tienen dos ejes perpendiculares entre sí, lo que significa que cada eje tiene su propia serie de bobinas y se controla de manera independiente. Al controlar la secuencia de activación de las bobinas, se puede controlar la velocidad, la dirección y la precisión del movimiento en ambos ejes.
 
+![image](https://user-images.githubusercontent.com/71302151/226469130-74c18722-b251-4e80-8fc8-c43d0e9fc574.png)
+
+
 #Codigo
 from machine import Pin
 from time import sleep
