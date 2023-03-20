@@ -17,72 +17,55 @@ Los motores biaxiales stepper motor tienen dos ejes perpendiculares entre sí, l
 
 ![image](https://user-images.githubusercontent.com/71302151/226469130-74c18722-b251-4e80-8fc8-c43d0e9fc574.png)
 
+![image](https://scontent.ftij1-3.fna.fbcdn.net/v/t1.15752-9/336063161_765265048446820_5575798665155460983_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=ni4ocz_mm4EAX9qfYOS&_nc_ht=scontent.ftij1-3.fna&oh=03_AdSQfrybJsg7Q4JBVH-u0bf7UwIYLaNXMW3t9KjMwbJVsA&oe=64404D3E)
 
 #Codigo
-from machine import Pin
-from time import sleep
+# Importar los módulos necesarios
+import machine # Para controlar los pines GPIO
+import utime   # Para agregar retardos en el código
 
-# Define los pines de control del motor A
-coil_A_1_pin = Pin(4, Pin.OUT)
-coil_A_2_pin = Pin(5, Pin.OUT)
-coil_A_3_pin = Pin(6, Pin.OUT)
-coil_A_4_pin = Pin(7, Pin.OUT)
+# Definir los pines GPIO que se van a utilizar
+coil_A_1_pin = machine.Pin(0, machine.Pin.OUT)
+coil_A_2_pin = machine.Pin(1, machine.Pin.OUT)
+coil_B_1_pin = machine.Pin(2, machine.Pin.OUT)
+coil_B_2_pin = machine.Pin(3, machine.Pin.OUT)
 
-# Define los pines de control del motor B
-coil_B_1_pin = Pin(8, Pin.OUT)
-coil_B_2_pin = Pin(9, Pin.OUT)
-coil_B_3_pin = Pin(10, Pin.OUT)
-coil_B_4_pin = Pin(11, Pin.OUT)
 
-# Define la secuencia de pasos para el motor
-seq = [[1, 0, 0, 1],
-       [1, 0, 0, 0],
-       [1, 1, 0, 0],
-       [0, 1, 0, 0],
-       [0, 1, 1, 0],
-       [0, 0, 1, 0],
-       [0, 0, 1, 1],
-       [0, 0, 0, 1]]
-
-# Función para realizar un paso en un motor
-def step(coil1, coil2, coil3, coil4, delay):
-    coil_A_1_pin.value(coil1)
-    coil_A_2_pin.value(coil2)
-    coil_A_3_pin.value(coil3)
-    coil_A_4_pin.value(coil4)
-    coil_B_1_pin.value(coil1)
-    coil_B_2_pin.value(coil2)
-    coil_B_3_pin.value(coil3)
-    coil_B_4_pin.value(coil4)
-    sleep(delay)
-
-# Función para girar un motor en una dirección
-def forward(delay, steps):
+# Definir el patrón de paso para mover el motor en sentido horario
+# El primer valor es el estado del pin A1-, el segundo valor es el estado del pin A1+,
+# el tercer valor es el estado del pin B1+, y el cuarto valor es el estado del pin B1-
+halfstep_seq = [
+    [1, 0, 0, 1],
+    [0, 0, 1, 1],
+    [0, 1, 0, 1],
+    [0, 0, 0, 1]
+]
+# Definir una función para mover el motor 
+def motor_step(steps, direction):
     for i in range(steps):
-        for j in range(8):
-            step(seq[j][0], seq[j][1], seq[j][2], seq[j][3], delay)
+        for halfstep in range(4):
+            coil_A_1_pin.value(halfstep_seq[halfstep][0])
+            coil_A_2_pin.value(halfstep_seq[halfstep][1])
+            coil_B_1_pin.value(halfstep_seq[halfstep][2])
+            coil_B_2_pin.value(halfstep_seq[halfstep][3])
+            utime.sleep_ms(1)
+    if direction == "left":
+        halfstep_seq.reverse()
+    else:
+        pass
 
-# Función para girar un motor en la dirección opuesta
-def backward(delay, steps):
-    for i in range(steps):
-        for j in range(7, -1, -1):
-            step(seq[j][0], seq[j][1], seq[j][2], seq[j][3], delay)
 
-# Gira el motor A hacia adelante
-forward(10, 512)
-
-# Gira el motor A hacia atrás
-backward(10, 512)
+# Mover el motor 
+motor_step(200, "right")
 
 #Explicacion del codigo
 Este código simula dos motores paso a paso conectados al Raspberry Pi Pico en la página de Wokwi. Los motores se controlan mediante la secuencia de pasos definida en la variable seq. Cada elemento de seq representa los valores de los cuatro pines de control del motor en un momento dado. Por ejemplo, seq[0] es [1, 0, 0, 1], lo que significa que el primer y cuarto pines del motor se activan y los otros dos no.
 
 Las funciones forward() y backward() controlan la dirección de rotación de los motores, utilizando la función step() para realizar un paso en cada motor. La función step() toma cuatro argumentos: los valores de los cuatro pines de control del motor y un valor de retardo delay
 
-https://scontent.ftij1-3.fna.fbcdn.net/v/t1.15752-9/335944045_745552403675292_6843736346227556516_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=Xzh6PLDQk8oAX-gf1NQ&_nc_ht=scontent.ftij1-3.fna&oh=03_AdT47h6Mc5eEPbb76HIP576m6bVEROXjDEx1O5w-M50AtA&oe=64406C78
 
 
 
-https://wokwi.com/projects/359754999682194433
+https://wokwi.com/projects/359761724320927745
 
 
