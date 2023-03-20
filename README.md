@@ -17,7 +17,7 @@ Los motores biaxiales stepper motor tienen dos ejes perpendiculares entre sí, l
 
 ![image](https://user-images.githubusercontent.com/71302151/226469130-74c18722-b251-4e80-8fc8-c43d0e9fc574.png)
 
-![image](https://scontent.ftij1-3.fna.fbcdn.net/v/t1.15752-9/336063161_765265048446820_5575798665155460983_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=ni4ocz_mm4EAX9qfYOS&_nc_ht=scontent.ftij1-3.fna&oh=03_AdSQfrybJsg7Q4JBVH-u0bf7UwIYLaNXMW3t9KjMwbJVsA&oe=64404D3E)
+
 
 #Codigo
 # Importar los módulos necesarios
@@ -61,9 +61,8 @@ motor_step(200, "right")
 #Explicacion del codigo
 Este código simula dos motores paso a paso conectados al Raspberry Pi Pico en la página de Wokwi. Los motores se controlan mediante la secuencia de pasos definida en la variable seq. Cada elemento de seq representa los valores de los cuatro pines de control del motor en un momento dado. Por ejemplo, seq[0] es [1, 0, 0, 1], lo que significa que el primer y cuarto pines del motor se activan y los otros dos no.
 
-Las funciones forward() y backward() controlan la dirección de rotación de los motores, utilizando la función step() para realizar un paso en cada motor. La función step() toma cuatro argumentos: los valores de los cuatro pines de control del motor y un valor de retardo delay
 
-
+![image](https://scontent.ftij1-3.fna.fbcdn.net/v/t1.15752-9/336063161_765265048446820_5575798665155460983_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=ni4ocz_mm4EAX9qfYOS&_nc_ht=scontent.ftij1-3.fna&oh=03_AdSQfrybJsg7Q4JBVH-u0bf7UwIYLaNXMW3t9KjMwbJVsA&oe=64404D3E)
 
 
 https://wokwi.com/projects/359761724320927745
